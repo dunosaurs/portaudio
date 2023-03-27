@@ -14,7 +14,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: download deno
         uses: denoland/setup-deno@v1
         with:
@@ -27,14 +27,6 @@ jobs:
       - name: check linting
         if: matrix.os == 'ubuntu-latest'
         run: deno lint
-      
-      - name: build the dynamic library
-        run: ./configure && make
-        working-directory: ./portaudio
-
-      - uses: actions/upload-artifact@v3
-        with:
-          path: ./portaudio/lib/.libs/*
       
       # TODO: Enable tests
       # - name: run tests
