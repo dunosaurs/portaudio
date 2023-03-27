@@ -9,7 +9,7 @@ import { endianess } from "./src/util.ts";
 
 export * from "./src/types.ts";
 
-function throwIfNegative<T>(val: T): T {
+function throwIfNegative<T extends number | bigint>(val: T): T {
   if (val < 0) {
     // If it gets here it is always a number
     throw PortAudio.getErrorText(val as number);
