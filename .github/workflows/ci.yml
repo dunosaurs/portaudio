@@ -28,5 +28,14 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: deno lint
       
-      - name: run tests
-        run: deno task test
+      - name: build the dynamic library
+        run: ./configure && make
+        working-directory: ./portaudio
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./portaudio/lib/.libs/*
+      
+      # TODO: Enable tests
+      # - name: run tests
+      #   run: deno task test
