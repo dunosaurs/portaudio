@@ -8,8 +8,8 @@ import { dlopen } from "https://deno.land/x/plug@1.0.1/mod.ts";
  * We also choose to prevent users from even touching the options in the main exported lib
  */
 export const lib = await dlopen({
-  name: "https://github.com/dunosaurs/portaudio/raw/main/build/",
-  url: "./build/",
+  name: "portaudio",
+  url: "https://github.com/dunosaurs/portaudio/raw/main/build/",
 }, {
   Pa_GetVersion: {
     parameters: [],
